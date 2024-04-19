@@ -198,7 +198,7 @@ public class Main {
     }
 
   }
-  //ejercicio 9
+  //ejercicio 9 y ejercicio 10
   public static class calculadoraConExit{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -242,7 +242,116 @@ public class Main {
         }
     }
   }
-  //ejercicio 10
+  //ejercicio 11
+  public static class Bolera {
+    private int capacidadTotal;
+    private int capacidadVIP;
+    private double dineroRecaudado;
+    private double dineroRecaudadoVIP;
+
+    public Bolera(int capacidadTotal, int capacidadVIP) {
+      this.capacidadTotal = capacidadTotal;
+      this.capacidadVIP = capacidadVIP;
+      this.dineroRecaudado = 0;
+      this.dineroRecaudadoVIP = 0;
+    }
+
+    public void entradaDeDatos() {
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Ingrese su nombre:");
+      String nombre = scanner.nextLine();
+      System.out.println("Ingrese su edad:");
+      int edad = scanner.nextInt();
+      System.out.println("Ingrese su DNI:");
+      String dni = scanner.next();
+      System.out.println("¿Tiene un pase? (VIP, descuento, ninguno)");
+      String pase = scanner.next();
+
+      if (edad < 21) {
+        System.out.println("Lo sentimos, solo se permite el ingreso a mayores de 21 años.");
+        return;
+      }
+
+      if (pase.equalsIgnoreCase("VIP")) {
+        if (capacidadVIP > 0) {
+          capacidadVIP--;
+          System.out.println("Bienvenido " + nombre + ", disfrute de su visita.");
+        } else {
+          System.out.println("Lo sentimos, no quedan entradas VIP disponibles.");
+        }
+      } else if (pase.equalsIgnoreCase("descuento")) {
+        if (capacidadTotal > 0) {
+          capacidadTotal--;
+          dineroRecaudado += 1500 / 2;
+          System.out.println("Bienvenido " + nombre + ", disfrute de su visita.");
+        } else {
+          System.out.println("Lo sentimos, no quedan entradas disponibles.");
+        }
+      } else {
+        System.out.println("¿Desea comprar una entrada normal o VIP? (normal/VIP)");
+        String entrada = scanner.next();
+        if (entrada.equalsIgnoreCase("VIP")) {
+          if (capacidadVIP > 0) {
+            capacidadVIP--;
+            dineroRecaudadoVIP += 2000;
+            System.out.println("Bienvenido " + nombre + ", disfrute de su visita.");
+          } else {
+            System.out.println("Lo sentimos, no quedan entradas VIP disponibles.");
+          }
+        } else {
+          if (capacidadTotal > 0) {
+            capacidadTotal--;
+            dineroRecaudado += 1500;
+            System.out.println("Bienvenido " + nombre + ", disfrute de su visita.");
+          } else {
+            System.out.println("Lo sentimos, no quedan entradas disponibles.");
+          }
+        }
+      }
+    }
+
+    public void capacidadDisponible() {
+      System.out.println("Capacidad disponible: " + capacidadTotal);
+      System.out.println("Capacidad VIP disponible: " + capacidadVIP);
+    }
+
+    public void dineroRecaudado() {
+      System.out.println("Dinero recaudado: " + dineroRecaudado);
+      System.out.println("Dinero recaudado VIP: " + dineroRecaudadoVIP);
+    }
+
+    public static void main(String[] args) {
+      Bolera bolera = new Bolera(500, 100); // Capacidad total es 500 y capacidad VIP es 100
+      Scanner scanner = new Scanner(System.in);
+      boolean salir = false;
+
+      while (!salir) {
+        System.out.println("1. Entrada de datos");
+        System.out.println("2. Capacidad disponible");
+        System.out.println("3. Dinero recaudado");
+        System.out.println("4. Cerrar sesión en el sistema");
+        System.out.println("Seleccione una opción:");
+        int opcion = scanner.nextInt();
+
+        switch (opcion) {
+          case 1:
+            bolera.entradaDeDatos();
+            break;
+          case 2:
+            bolera.capacidadDisponible();
+            break;
+          case 3:
+            bolera.dineroRecaudado();
+            break;
+          case 4:
+            salir = true;
+            break;
+          default:
+            System.out.println("Opción no válida");
+        }
+      }
+    }
+  }
 }
 
 
