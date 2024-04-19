@@ -86,5 +86,163 @@ public class Main {
       }
     }
   }
+  //ejercicio 6
+  public static class esPrimo{
+    public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Ingrese un número");
+      int numero = scanner.nextInt();
+      primo(numero);
+    }
+    public static void primo(int numero){
+      int contador = 2;
+      boolean primo = true;
+      while ((primo) && (contador != numero)){
+        if (numero % contador == 0){
+          primo = false;
+        }
+        contador++;
+      }
+      if (primo){
+        System.out.println("El número " + numero + " es primo.");
+      } else {
+        System.out.println("El número " + numero + " no es primo.");
+      }
+    }
+  }
+  //ejercicio 7
+  public static class Matriz {
+    public static void main(String[] args) {
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Ingrese el número de filas de la matriz");
+      int i = scanner.nextInt();
+      System.out.println("Ingrese el número de columnas de la matriz");
+      int j = scanner.nextInt();
+
+      int[][] matriz = new int[i][j];
+
+      for (int fila = 0; fila < i; fila++){
+        for (int columna = 0; columna < j; columna++){
+          System.out.println("Ingrese un número para la posición [" + fila + "][" + columna + "]");
+          matriz[fila][columna] = scanner.nextInt();
+        }
+      }
+
+      sumaImpares(matriz);
+    }
+
+    public static void sumaImpares(int[][] matriz){
+      int suma = 0;
+      for (int fila = 0; fila < matriz.length; fila++){
+        for (int columna = 0; columna < matriz[fila].length; columna++){
+          if (matriz[fila][columna] % 2 != 0){
+            suma += matriz[fila][columna];
+          }
+        }
+      }
+      System.out.println("La suma de los números impares de la matriz es: " + suma);
+    }
+  }
+  //ejercicio 8
+  public static class matriz2{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el número de filas de la matriz");
+        int i = scanner.nextInt();
+        System.out.println("Ingrese el número de columnas de la matriz");
+        int j = scanner.nextInt();
+
+        int[][] matriz = new int[i][j];
+
+        for (int fila = 0; fila < i; fila++){
+            for (int columna = 0; columna < j; columna++){
+                System.out.println("Ingrese un número para la posición [" + fila + "][" + columna + "]");
+                matriz[fila][columna] = scanner.nextInt();
+            }
+        }
+
+        CualesSonPares(matriz);
+        sumaPrimos(matriz);
+    }
+
+    public static void CualesSonPares(int[][] matriz){
+        for (int fila = 0; fila < matriz.length; fila++){
+            for (int columna = 0; columna < matriz[fila].length; columna++){
+                if (matriz[fila][columna] % 2 == 0){
+                    System.out.println("El número " + matriz[fila][columna] + " es par.");
+                }
+            }
+        }
+    }
+
+    public static void sumaPrimos(int[][] matriz){
+        int suma = 0;
+        for (int fila = 0; fila < matriz.length; fila++){
+            for (int columna = 0; columna < matriz[fila].length; columna++){
+                if (esPrimo(matriz[fila][columna])){
+                    suma += matriz[fila][columna];
+                }
+            }
+        }
+        System.out.println("La suma de los números primos de la matriz es: " + suma);
+    }
+
+    public static boolean esPrimo(int numero){
+        if (numero <= 1) return false;
+        for (int i = 2; i < numero; i++){
+            if (numero % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+  }
+  //ejercicio 9
+  public static class calculadoraConExit{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numero1 = 0;
+        int numero2 = 0;
+        String operacion = "";
+        boolean salir = false;
+
+        while (!salir){
+            System.out.println("Ingrese un número (0 para salir)");
+            numero1 = scanner.nextInt();
+            if (numero1 == 0) {
+                salir = true;
+                break;
+            }
+            System.out.println("Ingrese otro número");
+            numero2 = scanner.nextInt();
+            System.out.println("Ingrese la operación que desea realizar (+, -, *, /)");
+            operacion = scanner.next();
+
+            switch (operacion){
+                case "+":
+                    System.out.println("El resultado de la suma es: " + (numero1 + numero2));
+                    break;
+                case "-":
+                    System.out.println("El resultado de la resta es: " + (numero1 - numero2));
+                    break;
+                case "*":
+                    System.out.println("El resultado de la multiplicación es: " + (numero1 * numero2));
+                    break;
+                case "/":
+                    if (numero2 != 0) {
+                        System.out.println("El resultado de la división es: " + (numero1 / numero2));
+                    } else {
+                        System.out.println("No se puede dividir por cero");
+                    }
+                    break;
+                default:
+                    System.out.println("Operación no válida");
+            }
+        }
+    }
+  }
+  //ejercicio 10
 }
+
 
