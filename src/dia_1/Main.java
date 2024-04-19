@@ -242,7 +242,7 @@ public class Main {
         }
     }
   }
-  //ejercicio 11
+  //ejercicio 11 y 12
   public static class Bolera {
     private int capacidadTotal;
     private int capacidadVIP;
