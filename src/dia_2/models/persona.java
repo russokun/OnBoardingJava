@@ -74,10 +74,20 @@ public class persona {
   public void setPetsNames(String[] petsNames) {
     this.petsNames = petsNames;
   }
-
+  public String displayMascotas() {
+    if (petsNames.length == 0) {
+      return "No tengo mascotas.";
+    } else {
+      StringBuilder mascotasString = new StringBuilder("Mis mascotas se llaman: ");
+      for (String mascota : petsNames) {
+        mascotasString.append("\n- ").append(mascota);
+      }
+      return mascotasString.toString();
+    }
+  }
   public String presentarse() {
     String estadoCivil = casado ? "Estoy Casado/a" : "No estoy casado/a";
-    String mascotasString = petsNames.length == 0 ? "no tengo mascotas" : "Mis mascotas se llaman: " + String.join(", ", petsNames);
-    return "Hola, Mi nombre es " + nombre + " " + apellido + ".\nTengo " + edad + " años y mido " + altura + " metros de altura.\nMi DNI es " + dni + ".\n" + estadoCivil + ".\n" + mascotasString + ".";
+    String mascotas = displayMascotas();
+    return "Hola, Mi nombre es " + nombre + " " + apellido + ".\nTengo " + edad + " años y mido " + altura + " metros de altura.\nMi DNI es " + dni + ".\n" + estadoCivil + ".\n" + mascotas;
   }
 }
