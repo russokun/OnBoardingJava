@@ -201,8 +201,8 @@ public class Main {
   public static class calculadoraConExit{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int numero1 = 0;
-        int numero2 = 0;
+        int numero1;
+        int numero2;
         String operacion = "";
         boolean salir = false;
 
@@ -211,7 +211,7 @@ public class Main {
             numero1 = scanner.nextInt();
             if (numero1 == 0) {
                 salir = true;
-                break;
+
             }
             System.out.println("Ingrese otro número");
             numero2 = scanner.nextInt();
