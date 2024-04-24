@@ -14,12 +14,11 @@ public class Calculator implements CalculatorOperations{
     return a * b;
   }
   @Override
-  public int divide(int a, int b) {
+  public String divide(int a, int b) {
     if (b != 0) {
-      return a / b;
+      return "El resultado de la division es: "+ a / b;
     } else {
-      System.out.println("Error: División por cero");
-      return 0;
+      return "1ND3T3RM1N4T3D-3RR0R!";
     }
   }
 }
